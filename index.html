@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Portofolio - Ni Putu Anggi Amelia Ardan</title>
+  <!-- Font Poppins & FontAwesome Icon -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  
+  <style>
+    :root {
+      --gold-main: #B68A28;
+      --gold-dark: #8F691A;
+      --gold-light: #E4C88B;
+      --gold-subtle: #EDE0C8;
+      --bg-beige: #F6F0E6;
+      --card-white: #FFFFFF;
+      --text-dark: #222222;
+      --text-muted: #555555;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      background-color: var(--bg-beige);
+      color: var(--text-dark);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .bg-gapura {
+  position: fixed;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background-image: url('assets/gapura.png');
+  background-repeat: no-repeat;
+
+  /* Selalu berada di tengah layar */
+  background-position: center center;
+
+  /* Responsive untuk HP, tablet, laptop */
+  background-size: min(100vw, 100vh) auto;
+
+  opacity: 0.10;
+
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* HP */
+@media (max-width: 600px) {
+  .bg-gapura {
+    background-size: 120vw auto;
+  }
+}
+
+/* Tablet */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .bg-gapura {
+    background-size: 90vw auto;
+  }
+}
+
+/* Laptop / Desktop */
+@media (min-width: 1025px) {
+  .bg-gapura {
+    background-size: min(80vw, 1000px) auto;
+  }
+}
+
+    .app-wrapper {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 20px;
+      width: 100%;
+      flex: 1;
+      position: relative;
+      z-index: 1;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0 35px 0;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .brand {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--gold-main);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 35px;
+      flex-wrap: wrap;
+      row-gap: 10px;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      font-size: 15px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--gold-main);
+    }
+
+    .btn-login-nav {
+      background-color: var(--gold-main);
+      color: #FFF;
+      border: none;
+      padding: 8px 32px;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      transition: background 0.3s;
+    }
+
+    .btn-login-nav:hover {
+      background-color: var(--gold-dark);
+    }
+
+    .filter-tabs {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 25px;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      flex: 1;
+      min-width: 140px;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      background-color: #FFF;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      text-align: center;
+      color: #333;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+      transition: all 0.3s ease;
+    }
+
+    .tab-btn.active {
+      background-color: var(--gold-main);
+      color: #FFF;
+    }
+
+    .view-section {
+      display: none;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .view-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .badge-welcome {
+      display: inline-block;
+      background-color: var(--gold-light);
+      padding: 5px 16px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #4A3A10;
+      margin-bottom: 12px;
+    }
+
+    .home-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--gold-main);
+      line-height: 1.2;
+    }
+
+    .home-subtitle {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--gold-main);
+      margin-bottom: 8px;
+    }
+
+    .home-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      max-width: 520px;
+      line-height: 1.5;
+    }
+
+    .action-btns {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 25px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background-color: var(--gold-main);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-secondary {
+      background-color: #FFF;
+      color: #333;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .profile-banner {
+      background: #FFF;
+      border-radius: 16px;
+      padding: 25px 30px;
+      display: flex;
+      align-items: center;
+      gap: 35px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      margin-bottom: 25px;
+      flex-wrap: wrap;
+    }
+
+    .avatar-wrap {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+      background-color: var(--gold-subtle);
+    }
+
+    .avatar-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .profile-details h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .info-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+      word-break: break-word;
+    }
+
+    .quote-pill {
+      margin-top: 15px;
+      background-color: var(--gold-light);
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 600;
+      color: #333;
+      font-style: italic;
+    }
+
+    .counter-bar {
+      background-color: var(--gold-subtle);
+      border-radius: 12px;
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 25px;
+    }
+
+    .counter-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .counter-item i {
+      font-size: 26px;
+    }
+
+    .sec-header {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .sec-sub {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .grid-courses {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 25px;
+    }
+
+    .course-card {
+      background: #FFF;
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+      position: relative;
+    }
+
+    .course-card-header {
+      display: flex;
+      gap: 15px;
+    }
+
+    .course-icon {
+      font-size: 32px;
+      color: #333;
+    }
+
+    .course-info h4 {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .course-info p {
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 15px;
+    }
+
+    .btn-detail {
+      background-color: var(--gold-main);
+      color: white;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 5px;
+      font-size: 11px;
+      font-weight: 500;
+      cursor: pointer;
+      align-self: flex-end;
+    }
+
+    .banner-cta {
+      background-color: var(--gold-subtle);
+      border-radius: 12px;
+      padding: 18px 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .cta-left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .cta-left i {
+      font-size: 36px;
+    }
+
+    .cta-title {
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .cta-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .grid-cert {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .cert-box {
+      background: #FFF;
+      padding: 12px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    .cert-box h5 {
+      font-size: 13px;
+      margin-bottom: 8px;
+      color: var(--gold-dark);
+    }
+
+    .cert-box img {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+      display: block;
+      background-color: var(--gold-subtle);
+    }
+
+    .about-box {
+      background: #FFF;
+      border-radius: 12px;
+      padding: 22px;
+      margin-bottom: 18px;
+    }
+
+    .about-flex {
+      display: flex;
+      gap: 25px;
+      align-items: flex-start;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    .about-text {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      min-width: 220px;
+      flex: 1;
+    }
+
+    .about-text .info-row {
+      word-break: break-word;
+    }
+
+    .skills-box {
+      background: var(--gold-subtle);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 18px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-top: 12px;
+    }
+
+    .skill-card {
+      background: #FFF;
+      padding: 12px 15px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      font-size: 12px;
+    }
+
+    .values-box {
+      background: var(--gold-subtle);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      margin-top: 15px;
+      text-align: center;
+    }
+
+    .value-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .value-icon-circle {
+      width: 55px;
+      height: 55px;
+      background: #FFF;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+    }
+
+    .value-card span {
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    /* ===================== SECTION: CULTURAL CONTEXT (PENJOR & PURA) ===================== */
+    .culture-box {
+      background: linear-gradient(180deg, #F3E7D0 0%, #EAD8B4 100%);
+      border-radius: 16px;
+      padding: 45px 30px;
+      margin-bottom: 25px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .culture-eyebrow {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: var(--gold-dark);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .culture-title {
+      font-size: 26px;
+      font-weight: 700;
+      color: #4A3512;
+      line-height: 1.25;
+      max-width: 640px;
+      margin: 0 auto 18px auto;
+    }
+
+    .culture-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin: 0 auto 22px auto;
+      max-width: 320px;
+      background: #FFF;
+      padding: 10px 20px;
+      border-radius: 8px;
+    }
+
+    .culture-divider .dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--gold-main);
+    }
+
+    .culture-divider .diamond {
+      width: 10px;
+      height: 10px;
+      background: var(--gold-main);
+      transform: rotate(45deg);
+      margin: 0 3px;
+    }
+
+    .culture-images {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 0 auto 24px auto;
+      flex-wrap: wrap;
+    }
+
+    .culture-images figure {
+      margin: 0;
+      max-width: 260px;
+      flex: 1 1 220px;
+    }
+
+    .culture-images img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+      display: block;
+      border: 3px solid #FFF;
+      background-color: #ddd;
+    }
+
+    .culture-images figcaption {
+      margin-top: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--gold-dark);
+    }
+
+    .culture-desc {
+      font-size: 14px;
+      color: #5C4B26;
+      line-height: 1.8;
+      max-width: 720px;
+      margin: 0 auto 22px auto;
+      text-align: left;
+    }
+
+    .culture-desc p {
+      margin-bottom: 14px;
+    }
+
+    .culture-desc p:last-child {
+      margin-bottom: 0;
+    }
+
+    .btn-culture {
+      background-color: var(--gold-dark);
+      color: #FFF;
+      border: 2px solid #FFF;
+      padding: 13px 34px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+      transition: background 0.3s;
+    }
+
+    .btn-culture:hover {
+      background-color: #6E5013;
+    }
+
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 15px;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-card {
+      background: #FFF;
+      padding: 25px;
+      border-radius: 16px;
+      width: 80%;
+      max-width: 900px;
+      height: 85vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      position: relative;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 22px;
+      cursor: pointer;
+      color: #777;
+      z-index: 10;
+    }
+
+    .modal-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--gold-dark);
+      padding-right: 25px;
+    }
+
+    .pdf-viewer-container {
+      width: 100%;
+      height: 100%;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin-top: 10px;
+      overflow: hidden;
+    }
+
+    .pdf-viewer-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .pdf-fallback {
+      padding: 20px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .lock-icon-wrap {
+      width: 65px;
+      height: 65px;
+      background: var(--gold-main);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin: 0 auto 15px auto;
+    }
+
+    .input-field {
+      position: relative;
+      margin-bottom: 12px;
+    }
+
+    .input-field i {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #999;
+      font-size: 13px;
+    }
+
+    .input-field input {
+      width: 100%;
+      padding: 9px 10px 9px 34px;
+      background-color: #F5F5F5;
+      border: 1px solid #E5E5E5;
+      border-radius: 6px;
+      font-size: 11px;
+      outline: none;
+    }
+
+    .forgot-link {
+      display: block;
+      text-align: right;
+      font-size: 10px;
+      color: #888;
+      text-decoration: none;
+      margin-bottom: 15px;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background-color: var(--gold-main);
+      color: white;
+      border: none;
+      padding: 9px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    footer {
+      background-color: var(--gold-main);
+      color: white;
+      padding: 20px 40px;
+      margin-top: 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    footer h4 {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    footer p {
+      font-size: 12px;
+      opacity: 0.9;
+      word-break: break-word;
+    }
+
+    /* ===================== RESPONSIVE: TABLET ===================== */
+    @media (max-width: 900px) {
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .modal-card {
+        width: 92%;
+      }
+    }
+
+    /* ===================== RESPONSIVE: MOBILE (HP) ===================== */
+    @media (max-width: 640px) {
+      .app-wrapper {
+        padding: 14px;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-bottom: 20px;
+      }
+
+      nav {
+        width: 100%;
+        justify-content: space-between;
+        gap: 14px;
+      }
+
+      .btn-login-nav {
+        padding: 7px 18px;
+        font-size: 13px;
+      }
+
+      .filter-tabs {
+        gap: 8px;
+      }
+
+      .tab-btn {
+        min-width: 100%;
+        flex: 1 1 100%;
+      }
+
+      .action-btns {
+        flex-direction: column;
+      }
+      .btn-primary, .btn-secondary {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .profile-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+      }
+      .avatar-wrap {
+        width: 100px;
+        height: 100px;
+      }
+      .profile-details {
+        width: 100%;
+      }
+      .info-row {
+        justify-content: center;
+      }
+
+      .counter-bar {
+        padding: 15px 20px;
+        justify-content: center;
+      }
+      .counter-item {
+        flex: 1 1 45%;
+        justify-content: center;
+      }
+
+      .grid-courses {
+        grid-template-columns: 1fr;
+      }
+
+      .course-card-header {
+        flex-direction: column;
+      }
+
+      .banner-cta {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+      }
+      .banner-cta .btn-primary {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .grid-cert {
+        grid-template-columns: 1fr;
+      }
+
+      .about-flex {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .about-text .info-row {
+        justify-content: center;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .values-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .culture-box {
+        padding: 30px 18px;
+      }
+      .culture-title {
+        font-size: 20px;
+      }
+      .culture-images {
+        flex-direction: column;
+        align-items: center;
+      }
+      .culture-images figure {
+        max-width: 100%;
+        width: 100%;
+      }
+      .culture-desc {
+        font-size: 13px;
+        text-align: left;
+      }
+
+      .modal-overlay {
+        padding: 0;
+      }
+      .modal-card {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        padding: 18px;
+      }
+
+      #loginModal .modal-card {
+        height: auto;
+        border-radius: 16px;
+        width: 90%;
+        max-width: 360px;
+      }
+
+      #skillModal .modal-card {
+        height: auto;
+        border-radius: 16px;
+        width: 92%;
+      }
+
+      footer {
+        padding: 18px 20px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .values-grid {
+        grid-template-columns: 1fr;
+      }
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Layer background gapura (di belakang semua konten) -->
+  <div class="bg-gapura"></div>
+
+  <div class="app-wrapper">
+    <!-- Navbar Header -->
+    <header>
+      <div class="brand">Digital Portofolio</div>
+      <nav>
+        <a class="nav-link active" onclick="switchNav('home', this)">Home</a>
+        <a class="nav-link" onclick="switchNav('matakuliah', this)">Mata Kuliah</a>
+        <a class="nav-link" onclick="switchNav('portofolio', this)">Portofolio</a>
+        <a class="nav-link" onclick="switchNav('tentang', this)">Tentang</a>
+        <button class="btn-login-nav" onclick="openLoginModal()">LOGIN</button>
+      </nav>
+    </header>
+
+    <!-- SECTION 1: HOME -->
+    <div id="home" class="view-section active">
+      <div class="badge-welcome">Selamat Datang!</div>
+      <div class="home-title">Portofolio Digital</div>
+      <div class="home-subtitle">Mata Kuliah</div>
+      <div class="home-desc">
+        Dokumentasi pembelajaran berbasis Case-Based Learning (CBL) dan Project-Based Learning (PBL).
+      </div>
+
+      <div class="action-btns">
+        <button class="btn-primary" onclick="switchNav('portofolio', document.querySelectorAll('.nav-link')[2])">
+          <i class="fa-solid fa-book-open"></i> Jelajahi Portofolio
+        </button>
+        <button class="btn-secondary" onclick="switchNav('matakuliah', document.querySelectorAll('.nav-link')[1])">
+          <i class="fa-solid fa-book"></i> Lihat Mata Kuliah
+        </button>
+      </div>
+
+      <div class="profile-banner">
+        <div class="avatar-wrap">
+          <img src="assets/foto_profil.jpeg" alt="Foto Profil">
+        </div>
+        <div class="profile-details" style="flex:1;">
+          <h3>Ni Putu Anggi Amelia Ardan</h3>
+          <div class="info-row"><i class="fa-solid fa-user"></i> Sistem Informasi (Kelas JA233)</div>
+          <div class="info-row"><i class="fa-solid fa-building-columns"></i> ITB STIKOM BALI</div>
+          <div class="info-row"><i class="fa-solid fa-id-card"></i> NIM: 240030183</div>
+          <div class="quote-pill">
+            "Learning Through Cases & Building Innovative Projects."
+          </div>
+        </div>
+      </div>
+
+      <div class="counter-bar">
+        <div class="counter-item">
+          <i class="fa-solid fa-book-open"></i>
+          <div>
+            <div style="font-size:14px; font-weight:700;">2</div>
+            <div style="font-size:10px; font-weight:normal;">Case-Based Learning</div>
+          </div>
+        </div>
+        <div class="counter-item">
+          <i class="fa-solid fa-briefcase"></i>
+          <div>
+            <div style="font-size:14px; font-weight:700;">2</div>
+            <div style="font-size:10px; font-weight:normal;">Project-Based Learning</div>
+          </div>
+        </div>
+        <div class="counter-item">
+          <i class="fa-solid fa-award"></i>
+          <div style="font-size:12px; margin-top:3px;">Sertifikat</div>
+        </div>
+      </div>
+
+      <!-- SECTION: CULTURAL CONTEXT (PENJOR & PURA) -->
+      <div id="cultural-context" class="culture-box">
+        <div class="culture-eyebrow">Cultural Context</div>
+        <div class="culture-title">Penjor &amp; Pura sebagai Inspirasi Budaya</div>
+
+        <div class="culture-divider">
+          <span class="dot"></span><span class="dot"></span>
+          <span class="diamond"></span>
+          <span class="dot"></span><span class="diamond"></span><span class="dot"></span>
+          <span class="diamond"></span>
+          <span class="dot"></span><span class="dot"></span>
+        </div>
+
+        <div class="culture-images">
+          <figure>
+            <img src="assets/gapura.jpg" alt="Gapura / Pura Bali">
+            <figcaption>Pura - Simbol Spiritual & Kebersamaan</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/penjor.jpg" alt="Penjor Bali">
+            <figcaption>Penjor - Simbol Syukur & Keseimbangan</figcaption>
+          </figure>
+        </div>
+
+        <div class="culture-desc">
+  <p>
+    Penjor dan pura menjadi inspirasi desain website ini karena
+    memiliki nilai budaya, spiritual, dan visual yang kuat.
+  </p>
+</div>
+
+<button 
+  class="btn-culture"
+  onclick="switchNav('tentang', document.querySelectorAll('.nav-link')[3])">
+  Baca Selengkapnya →
+</button>
+      </div>
+    </div>
+
+    <!-- SECTION 2: MATA KULIAH -->
+    <div id="matakuliah" class="view-section">
+      <div class="filter-tabs">
+        <button id="btn-cbl" class="tab-btn active" onclick="filterCategory('cbl', this)">Case-Based Learning</button>
+        <button id="btn-pbl" class="tab-btn" onclick="filterCategory('pbl', this)">Project-Based Learning</button>
+        <button class="tab-btn" onclick="switchNav('portofolio', document.querySelectorAll('.nav-link')[2])">Sertifikat</button>
+      </div>
+
+      <div class="sec-header">Mata Kuliah</div>
+      <div id="sub-cat-label" class="sec-sub">Case-Based Learning</div>
+
+      <!-- CBL Item List -->
+      <div id="cbl-view">
+        <div class="grid-courses">
+          <div class="course-card">
+            <div class="course-card-header">
+              <div class="course-icon"><i class="fa-solid fa-shield-halved"></i></div>
+              <div class="course-info">
+                <h4>Kesehatan, Keselamatan Kerja, Lingkungan Hidup (K3L)</h4>
+                <p><strong>Topik:</strong> Manajemen Keselamatan dan Kenyamanan Ruang Belajar Berbasis K3L di Kampus ITB STIKOM Bali.<br>
+                <strong>Dosen Pengampu:</strong> Dr. Ir. Paula Dewanti, S.Kom., M.Kom.</p>
+              </div>
+            </div>
+            <button class="btn-detail" onclick="openDetailModal('k3l')">Pratinjau PDF</button>
+          </div>
+
+          <div class="course-card">
+            <div class="course-card-header">
+              <div class="course-icon"><i class="fa-solid fa-users-gear"></i></div>
+              <div class="course-info">
+                <h4>Pengelola Sumber Daya Perusahaan (CRM)</h4>
+                <p><strong>Topik:</strong> Analisis Kepuasan Pelanggan pada Bank Mandiri Menggunakan Data CRM.<br>
+                <strong>Tim Penyusun:</strong> I Kadek Artha Dana Mahardika, Putu Anggi Amelia Ardan, I Kadek Juni Wahyudi.</p>
+              </div>
+            </div>
+            <button class="btn-detail" onclick="openDetailModal('crm')">Pratinjau PDF</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- PBL Item List -->
+      <div id="pbl-view" style="display: none;">
+        <div class="grid-courses">
+          <div class="course-card">
+            <div class="course-card-header">
+              <div class="course-icon"><i class="fa-solid fa-database"></i></div>
+              <div class="course-info">
+                <h4>Basis Data (SQL Query & JOINs)</h4>
+                <p>Praktikum penguasaan kueri SQL relasional menggunakan MariaDB (INNER JOIN, LEFT JOIN, RIGHT JOIN, dan FULL OUTER JOIN) pada studi kasus data siswa dan kelas.</p>
+              </div>
+            </div>
+            <button class="btn-detail" onclick="openDetailModal('basda')">Pratinjau PDF</button>
+          </div>
+          <div class="course-card">
+            <div class="course-card-header">
+              <div class="course-icon"><i class="fa-solid fa-gamepad"></i></div>
+              <div class="course-info">
+                <h4>Pengembangan Permainan Digital (Godot Engine)</h4>
+                <p>Pengembangan game 3D "Squash The Creeps" menggunakan Godot Engine, mencakup perancangan scene, player physics, mob spawning, skrip GDScript, UI skor, dan deteksi tabrakan.</p>
+              </div>
+            </div>
+            <button class="btn-detail" onclick="openDetailModal('godot')">Pratinjau PDF</button>
+          </div>
+        </div>
+
+        <div class="banner-cta">
+          <div class="cta-left">
+            <i class="fa-solid fa-clipboard-list"></i>
+            <div>
+              <div class="cta-title">Siap Menjelajahi Portofolio?</div>
+              <div class="cta-desc">Lihat dokumen lengkap dari setiap mata kuliah yang telah ditempuh.</div>
+            </div>
+          </div>
+          <button class="btn-primary" onclick="switchNav('portofolio', document.querySelectorAll('.nav-link')[2])">Lihat Portofolio</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 3: PORTOFOLIO / SERTIFIKAT -->
+    <div id="portofolio" class="view-section">
+      <div class="filter-tabs">
+        <button class="tab-btn" onclick="switchNav('matakuliah', document.querySelectorAll('.nav-link')[1]); filterCategory('cbl', document.getElementById('btn-cbl'));">Case-Based Learning</button>
+        <button class="tab-btn" onclick="switchNav('matakuliah', document.querySelectorAll('.nav-link')[1]); filterCategory('pbl', document.getElementById('btn-pbl'));">Project-Based Learning</button>
+        <button class="tab-btn active">Sertifikat</button>
+      </div>
+
+       <div class="grid-cert">
+        <div class="cert-box">
+          <h5>Sertifikat FESTIKA #7 "Celebration"</h5>
+          <a href="assets/sertifikat_festika7.jpeg" target="_blank">
+            <img src="assets/sertifikat_festika7.jpeg" alt="Sertifikat FESTIKA #7">
+          </a>
+        </div>
+        <div class="cert-box">
+          <h5>Sertifikat Kuliah Umum & Ramah Tamah Maba 2024</h5>
+          <a href="assets/sertifikat_kuliahumum.jpeg" target="_blank">
+            <img src="assets/sertifikat_kuliahumum.jpeg" alt="Sertifikat Kuliah Umum Maba">
+          </a>
+        </div>
+        <div class="cert-box">
+          <h5>Sertifikat MAKRAB HIMAPRODI SI #11</h5>
+          <a href="assets/sertifikat_makrab.jpeg" target="_blank">
+            <img src="assets/sertifikat_makrab.jpeg" alt="Sertifikat MAKRAB Himaprodi SI">
+          </a>
+        </div>
+        <div class="cert-box">
+          <h5>Sertifikat Jalan Sehat Dies Natalis ke-22</h5>
+          <a href="assets/sertifikat_jalansehat.jpeg" target="_blank">
+            <img src="assets/sertifikat_jalansehat.jpeg" alt="Sertifikat Jalan Sehat Dies Natalis">
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 4: TENTANG SAYA -->
+    <div id="tentang" class="view-section">
+      <div class="about-box">
+        <div class="sec-header">Tentang Saya</div>
+        <div class="about-flex">
+          <div class="avatar-wrap" style="width:110px; height:110px;">
+            <img src="assets/foto_profil.jpeg" alt="Foto Profil">
+          </div>
+          <div class="about-text">
+            <p style="margin-bottom: 12px;">
+              Mahasiswa Sistem Informasi yang tertarik pada pengembangan sistem dan analisis data, selalu ingin belajar hal yang baru dan berkontribusi dalam tim.
+            </p>
+            <div class="info-row"><i class="fa-solid fa-location-dot"></i> Bali</div>
+            <div class="info-row"><i class="fa-solid fa-envelope"></i> anggiardan2@gmail.com</div>
+            <div class="info-row"><i class="fa-solid fa-phone"></i> 081237828894</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CULTURAL CONTEXT (ditampilkan juga di Tentang Saya sebagai konteks) -->
+      <div class="culture-box" style="margin-bottom:18px;">
+        <div class="culture-eyebrow">Cultural Context</div>
+        <div class="culture-title">Penjor &amp; Pura sebagai Inspirasi Budaya</div>
+
+        <div class="culture-divider">
+          <span class="dot"></span><span class="dot"></span>
+          <span class="diamond"></span>
+          <span class="dot"></span><span class="diamond"></span><span class="dot"></span>
+          <span class="diamond"></span>
+          <span class="dot"></span><span class="dot"></span>
+        </div>
+
+        <div class="culture-images">
+          <figure>
+            <img src="assets/gapura.jpg" alt="Gapura / Pura Bali">
+            <figcaption>Pura - Simbol Spiritual & Kebersamaan</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/penjor.jpg" alt="Penjor Bali">
+            <figcaption>Penjor - Simbol Syukur & Keseimbangan</figcaption>
+          </figure>
+        </div>
+
+        <div class="culture-desc">
+          <p>Saya memilih penjor dan pura sebagai tema utama dalam desain website karena keduanya merupakan elemen budaya Bali yang memiliki nilai simbolis dan visual yang kuat. Bagi saya, penjor tidak hanya menjadi dekorasi dalam upacara adat, tetapi juga memiliki makna sebagai simbol rasa syukur, penghormatan, dan keseimbangan dalam kehidupan. Sementara itu, pura merupakan bagian penting dari kehidupan masyarakat Bali yang mencerminkan nilai spiritual, kebersamaan, serta hubungan manusia dengan lingkungan dan tradisi.</p>
+          <p>Pemilihan kedua unsur tersebut juga didasarkan pada karakter visualnya yang khas. Bentuk penjor yang melengkung, detail hiasannya, serta struktur arsitektur pura memberikan banyak inspirasi dalam menentukan bentuk, komposisi, ornamen, dan nuansa visual pada website. Saya ingin mengadaptasi unsur-unsur tersebut ke dalam desain secara modern tanpa menghilangkan identitas budaya yang menjadi sumber inspirasinya.</p>
+          <p>Melalui tema penjor dan pura, saya ingin menunjukkan bahwa budaya lokal tidak hanya dapat dipertahankan sebagai sebuah tradisi, tetapi juga dapat dikembangkan menjadi sumber inspirasi dalam bidang kreativitas dan desain digital. Dengan demikian, website yang saya buat tidak hanya memiliki nilai estetika, tetapi juga memiliki cerita dan identitas budaya yang melatarbelakanginya.</p>
+        </div>
+      </div>
+
+      <div class="skills-box">
+        <div class="sec-header">Keahlian</div>
+        <div class="skills-grid" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="skill-card" onclick="openSkillModal('uiux')" style="cursor:pointer;"><i class="fa-solid fa-pen-nib"></i> UI/UX Design</div>
+          <div class="skill-card" onclick="openSkillModal('inggris')" style="cursor:pointer;"><i class="fa-solid fa-book"></i> Bahasa Inggris</div>
+          <div class="skill-card" onclick="openSkillModal('speaking')" style="cursor:pointer;"><i class="fa-solid fa-user-tie"></i> Public Speaking</div>
+        </div>
+      </div> 
+
+      <div class="values-box">
+        <div class="sec-header">Nilai Inti</div>
+        <div class="values-grid">
+          <div class="value-card">
+            <div class="value-icon-circle"><i class="fa-solid fa-users"></i></div>
+            <span>Kolaboratif</span>
+          </div>
+          <div class="value-card">
+            <div class="value-icon-circle"><i class="fa-regular fa-lightbulb"></i></div>
+            <span>Inovatif</span>
+          </div>
+          <div class="value-card">
+            <div class="value-icon-circle"><i class="fa-solid fa-gears"></i></div>
+            <span>Responsif</span>
+          </div>
+          <div class="value-card">
+            <div class="value-icon-circle"><i class="fa-solid fa-clipboard-check"></i></div>
+            <span>Bertanggung Jawab</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL DETAIL PRATINJAU DOKUMEN PDF -->
+  <div id="detailModal" class="modal-overlay" onclick="closeDetailModal()">
+    <div class="modal-card" onclick="event.stopPropagation()">
+      <span class="close-btn" onclick="closeDetailModal()">&times;</span>
+      <h3 id="modalTitle">Dokumen Portofolio</h3>
+      <div id="pdfViewer" class="pdf-viewer-container"></div>
+    </div>
+  </div>
+
+  <!-- MODAL POPUP SKILL / KEAHLIAN -->
+  <div id="skillModal" class="modal-overlay" onclick="closeSkillModal()">
+    <div class="modal-card" style="max-width: 500px; height: auto;" onclick="event.stopPropagation()">
+      <span class="close-btn" onclick="closeSkillModal()">&times;</span>
+      <h3 id="skillModalTitle">Detail Keahlian</h3>
+      <div id="skillModalBody" style="margin-top: 15px;"></div>
+    </div>
+  </div>
+
+  <!-- MODAL POPUP LOGIN -->
+  <div id="loginModal" class="modal-overlay" onclick="closeLoginModal()">
+    <div class="modal-card" style="width:350px; height:auto; text-align:center;" onclick="event.stopPropagation()">
+      <span class="close-btn" onclick="closeLoginModal()">&times;</span>
+      <div class="lock-icon-wrap"><i class="fa-solid fa-lock"></i></div>
+      <h3>Login ke Portofolio</h3>
+      <p style="margin-bottom: 20px; font-size:11px; color:#666;">Masuk untuk melihat dokumentasi pembelajaran secara lengkap</p>
+      
+      <form onsubmit="event.preventDefault(); alert('Login Berhasil!'); closeLoginModal();">
+        <div class="input-field">
+          <i class="fa-solid fa-user"></i>
+          <input type="text" placeholder="Username atau Email" required>
+        </div>
+        <div class="input-field">
+          <i class="fa-solid fa-lock"></i>
+          <input type="password" placeholder="Password" required>
+        </div>
+        <a href="#" class="forgot-link">Lupa Password?</a>
+        <button type="submit" class="btn-submit">LOGIN</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <h4>Dr. I NYOMAN BAGUS PRAMARTHA, S.Pd., M.Pd.</h4>
+    <p>Dosen Pengampu Pengembangan Portofolio</p>
+    <div style="height: 12px;"></div>
+    <p>Email: anggi.amelia@stikom-bali.ac.id</p>
+    <p>Program Studi Sistem Informasi - ITB STIKOM Bali</p>
+  </footer>
+
+  <script>
+    function switchNav(sectionId, element) {
+      document.querySelectorAll('.view-section').forEach(sec => sec.classList.remove('active'));
+      document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+
+      document.getElementById(sectionId).classList.add('active');
+      if (element) {
+        element.classList.add('active');
+      }
+    }
+
+    function filterCategory(catType, btnElement) {
+      const cblView = document.getElementById('cbl-view');
+      const pblView = document.getElementById('pbl-view');
+      const subTitle = document.getElementById('sub-cat-label');
+
+      document.querySelectorAll('.filter-tabs .tab-btn').forEach(btn => btn.classList.remove('active'));
+      if (btnElement) btnElement.classList.add('active');
+
+      if (catType === 'cbl') {
+        cblView.style.display = 'block';
+        pblView.style.display = 'none';
+        subTitle.innerText = 'Case-Based Learning';
+      } else {
+        cblView.style.display = 'none';
+        pblView.style.display = 'block';
+        subTitle.innerText = 'Project-Based Learning';
+      }
+    }
+
+    function openLoginModal() {
+      document.getElementById('loginModal').classList.add('active');
+    }
+
+    function closeLoginModal() {
+      document.getElementById('loginModal').classList.remove('active');
+    }
+
+   const pdfFiles = {
+  k3l: {
+    title: 'K3L - Manajemen Keselamatan Ruang Belajar',
+    url: 'assets/Makalah_K3L.pdf'
+  },
+
+  crm: {
+    title: 'CRM - Analisis Kepuasan Pelanggan Bank Mandiri',
+    url: 'assets/240030183_Ni_Putu_Anggi_Amelia_Ardan.pdf'
+  },
+
+  basda: {
+    title: 'Basis Data - SQL Query & JOINs',
+    url: 'assets/anggi_basis_data.pdf'
+  },
+
+  godot: {
+    title: 'Godot Engine - Game Squash The Creeps',
+    url: 'assets/Godot.pdf'
+  }
+};
+    function openDetailModal(docKey) {
+      const doc = pdfFiles[docKey];
+      if (!doc) return;
+
+      document.getElementById('modalTitle').innerText = doc.title;
+      const viewer = document.getElementById('pdfViewer');
+      
+      viewer.innerHTML = `
+        <iframe src="${doc.url}" type="application/pdf">
+          <div class="pdf-fallback">
+            Browser Anda tidak mendukung pratinjau PDF langsung. 
+            <a href="${doc.url}" target="_blank" style="color: var(--gold-main); font-weight: 600;">Klik di sini untuk mengunduh/melihat PDF</a>.
+          </div>
+        </iframe>
+      `;
+      
+      document.getElementById('detailModal').classList.add('active');
+    }
+
+    function closeDetailModal() {
+      document.getElementById('detailModal').classList.remove('active');
+      document.getElementById('pdfViewer').innerHTML = '';
+    }
+
+    // Skill Modal Handler
+    const skillFiles = {
+      uiux: [
+        { type: 'pdf', name: 'Booking Ruangan', url: 'assets/Booking_Ruangan.pdf' }
+      ],
+      inggris: [
+        { type: 'image', name: 'Sertifikat Frontrunner', url: 'assets/sertifikat_frontrunner.jpg' }
+      ],
+      speaking: [
+        { type: 'image', name: 'Foto MC', url: 'assets/foto_mc.jpg' }
+      ]
+    };
+    const skillNames = { uiux: 'UI/UX Design', inggris: 'Bahasa Inggris', speaking: 'Public Speaking' };
+
+    function openSkillModal(catId) {
+      document.getElementById('skillModalTitle').innerText = skillNames[catId];
+      const body = document.getElementById('skillModalBody');
+      const list = skillFiles[catId];
+      if (!list || list.length === 0) {
+        body.innerHTML = `<p style="font-size:13px;color:#777;text-align:center;padding:20px;">Belum ada foto atau sertifikat untuk keahlian ini.</p>`;
+      } else {
+        body.innerHTML = `<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:12px;">
+          ${list.map(f => `
+            <a href="${f.url}" target="_blank" style="text-decoration:none;color:inherit;">
+              <div style="border:1px solid #eee;border-radius:8px;overflow:hidden;">
+                ${f.type === 'image'
+                  ? `<img src="${f.url}" style="width:100%;height:100px;object-fit:cover;display:block;">`
+                  : `<div style="height:100px;background:var(--gold-main);color:white;display:flex;align-items:center;justify-content:center;font-size:12px;">PDF</div>`}
+                <div style="font-size:11px;padding:5px;">${f.name}</div>
+              </div>
+            </a>
+          `).join('')}
+        </div>`;
+      }
+      document.getElementById('skillModal').classList.add('active');
+    }
+
+    function closeSkillModal() {
+      document.getElementById('skillModal').classList.remove('active');
+    }
+  </script>
+</body>
+</html>
